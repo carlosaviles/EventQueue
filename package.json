@@ -11,6 +11,6 @@
     "jest": "^23.6.0"
   },
   "dependencies": {
-    "amqp": "^0.2.7"
+    "amqplib": "^0.5.2"
   }
 }
