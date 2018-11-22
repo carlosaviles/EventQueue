@@ -3,6 +3,7 @@ var channel;
 var receivingQueue;
 var eventType;
 var connectionReady = () => {};
+var amqpURL = process.env.AMQPURL || 'amqp://localhost';
 
 var channelErrorCallback = (err) => {
     console.log('Channel error');
@@ -74,7 +75,7 @@ var connect = function(cb, eventTypeFromWhichReceive){
 
     eventType = eventTypeFromWhichReceive;
     
-    amqp.connect('amqp://localhost', connectCallback);
+    amqp.connect(amqpURL, connectCallback);
 };
 
 module.exports.AMQP = amqp;
