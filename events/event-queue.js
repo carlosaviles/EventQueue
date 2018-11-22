@@ -45,7 +45,7 @@ var connectCallback = function(err, conn) {
         console.log('Unable to connect to AMQP');
         console.log(err);
         console.log('Will retry in 5 seconds');
-        setTimeout(connect, 5000);
+        setTimeout(doConnect, 5000);
     } else if (!conn) {
         console.log('AMQP connection is ' + conn);
     } else {
@@ -77,8 +77,12 @@ var connect = function(cb, eventTypeFromWhichReceive){
 
     eventType = eventTypeFromWhichReceive;
     
-    amqp.connect(amqpURL, connectCallback);
+    doConnect();
 };
+
+var doConnect = function() {
+    amqp.connect(amqpURL, connectCallback);
+}
 
 module.exports.AMQP = amqp;
 module.exports.connectCallback = connectCallback;
