@@ -44,6 +44,8 @@ var connectCallback = function(err, conn) {
     if(err) {
         console.log('Unable to connect to AMQP');
         console.log(err);
+        console.log('Will retry in 5 seconds');
+        setTimeout(connect, 5000);
     } else if (!conn) {
         console.log('AMQP connection is ' + conn);
     } else {
