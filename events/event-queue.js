@@ -74,7 +74,7 @@ var connect = function(cb, eventTypeFromWhichReceive){
 
     eventType = eventTypeFromWhichReceive;
     
-    amqp.connect('amqp://rabbitmq', connectCallback);
+    amqp.connect('amqp://localhost', connectCallback);
 };
 
 module.exports.AMQP = amqp;
