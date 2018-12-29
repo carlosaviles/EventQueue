@@ -85,6 +85,10 @@ var doConnect = function() {
     amqp.connect(amqpURL, connectCallback);
 }
 
+var getChannel = function() {
+    return channel;
+}
+
 module.exports.AMQP = amqp;
 module.exports.connectCallback = connectCallback;
 module.exports.createChannelCallback = createChannelCallback;
@@ -96,4 +100,4 @@ module.exports.assertQueueCallback = assertQueueCallback;
 module.exports.channelErrorCallback = channelErrorCallback;
 module.exports.bindQueueCallback = bindQueueCallback;
 module.exports.assertExchangeCallback = assertExchangeCallback;
-module.exports.channel = channel;
+module.exports.getChannel = getChannel;
