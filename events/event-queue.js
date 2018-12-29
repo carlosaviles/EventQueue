@@ -33,6 +33,7 @@ var assertExchangeCallback = (err, ok) => {
 var createChannelCallback = function(err, ch) {
     channel = ch;
     channel.on('error', channelErrorCallback);
+    channel.prefetch(1);
 
     // This is for sending 
     channel.assertExchange('Events', 'direct', {durable: false}, assertExchangeCallback);
