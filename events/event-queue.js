@@ -96,3 +96,4 @@ module.exports.assertQueueCallback = assertQueueCallback;
 module.exports.channelErrorCallback = channelErrorCallback;
 module.exports.bindQueueCallback = bindQueueCallback;
 module.exports.assertExchangeCallback = assertExchangeCallback;
+module.exports.channel = channel;
