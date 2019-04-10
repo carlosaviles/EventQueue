@@ -11,7 +11,7 @@ var channelErrorCallback = (err) => {
 };
 
 var bindQueueCallback = (err, ok) => {
-    console.log('Reading events for type ' + eventType);
+    console.log('Reading events for types ' + eventTypes);
     module.exports.connectionReady();
 }
 
@@ -19,7 +19,10 @@ var assertQueueCallback = (err, q) => {
 
     receivingQueue = q;
     // Bind queue for receiving to Events exchange
-    channel.bindQueue(receivingQueue.queue, 'Events', eventType, {}, bindQueueCallback);
+    eventTypes.forEach(function(eventType) {
+        channel.bindQueue(receivingQueue.queue, 'Events', eventType, {}, bindQueueCallback);
+    });
+    
 };
 
 var assertExchangeCallback = (err, ok) => {
@@ -69,14 +72,14 @@ var setConsumeCallback = function(cb) {
     channel.consume(receivingQueue.queue, cb);
 };
 
-var connect = function(cb, eventTypeFromWhichReceive){  
+var connect = function(cb, eventTypesFromWhichReceive){  
 
     if(cb) {
         connectionReady = cb;
         module.exports.connectionReady = cb;
     }
 
-    eventType = eventTypeFromWhichReceive;
+    eventTypes = eventTypesFromWhichReceive;
     
     doConnect();
 };
